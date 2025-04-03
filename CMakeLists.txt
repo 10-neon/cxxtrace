@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.9)
+cmake_minimum_required(VERSION 3.20)
 
 # Set a name and a version number for your project:
 project(cxxtrace VERSION 0.0.1 LANGUAGES CXX)
@@ -10,14 +10,12 @@ include(GNUInstallDirs)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-
-
 # Compilation options
 option(BUILD_DOCS "Enable building of documentation" ON)
+option(BUILD_TESTING "Enable building of unittest" ON)
 
 # compile the library
 add_subdirectory(src)
-
 
 # compile the application
 add_subdirectory(app)

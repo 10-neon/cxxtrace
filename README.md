@@ -19,6 +19,7 @@ It assumes that your current working directory is the top-level directory
 of the freshly cloned repository:
 
 ```
+pip install -r requirements.txt
 mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..
