@@ -1,2 +1,0 @@
-add_executable(cxxtrace_app cxxtrace_app.cpp)
-target_link_libraries(cxxtrace_app PRIVATE cxxtrace)

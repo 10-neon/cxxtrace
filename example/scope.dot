@@ -1,0 +1,58 @@
+digraph G {
+  compound=true;
+  node [shape=box, style=rounded, fontname="Arial"];
+  edge [fontname="Arial", fontsize=10];
+  process_node [label="Process 90754\nCPU: user=242045ms sys=10012ms\nMemory: 1MB", shape=component, color="#28a745", penwidth=2, style=filled, fillcolor=white];
+  subgraph cluster_thread_259 {
+    label="Main Thread 259 (CPU user=81707ms sys=9177ms)";
+    style=filled;
+    fillcolor=white;
+    color=black;
+    penwidth=2;
+    cluster_thread_259_entry [shape=point, style=invis];
+    node_0_259 [label="DatabaseQuery\nscope.cpp:11 | cpu_user: 70/76 cpu_sys: 14/22"];
+    node_1_259 [label="DB_Latency\nscope.cpp:16 | cpu_user: 6/6 cpu_sys: 8/8"];
+    node_2_259 [label="FinancialAnalysis\nscope.cpp:32 | cpu_user: 8/80354 cpu_sys: 5/768"];
+    node_3_259 [label="DataProcessing\nscope.cpp:38 | cpu_user: 7/7 cpu_sys: 3/3"];
+    node_4_259 [label="StatisticalCalculation\nscope.cpp:47 | cpu_user: 80339/80339 cpu_sys: 760/760"];
+    node_5_259 [label="UserProcessing\nscope.cpp:75 | cpu_user: 22/80452 cpu_sys: 44/834"];
+    node_6_259 [label="MainProgram\nscope.cpp:83 | cpu_user: 223/80675 cpu_sys: 171/1005"];
+    node_7_259 [label="root\ncxxtrace.hpp:134 | cpu_user: 1043/81707 cpu_sys: 8172/9177"];
+    node_8_259 [label="default\ncxxtrace.hpp:136 | cpu_user: 0/80664 cpu_sys: 0/1005"];
+    node_0_259 -> node_1_259 [label="cpu_user=6\ncpu_sys=8"];
+    node_2_259 -> node_3_259 [label="cpu_user=7\ncpu_sys=3"];
+    node_2_259 -> node_4_259 [label="cpu_user=80339\ncpu_sys=760"];
+    node_5_259 -> node_0_259 [label="cpu_user=76\ncpu_sys=22"];
+    node_5_259 -> node_2_259 [label="cpu_user=80354\ncpu_sys=768"];
+    node_6_259 -> node_5_259 [label="cpu_user=80452\ncpu_sys=834"];
+    node_7_259 -> node_8_259 [label="cpu_user=80664\ncpu_sys=1005"];
+    node_8_259 -> node_6_259 [label="cpu_user=80675\ncpu_sys=1005"];
+    }
+  process_node -> cluster_thread_259_entry [lhead=cluster_thread_259, color="#6c757d", style=dashed];
+  subgraph cluster_thread_2563 {
+    label=" 2563 (CPU user=160314ms sys=665ms)";
+    style=filled;
+    fillcolor=white;
+    color=black;
+    penwidth=2;
+    cluster_thread_2563_entry [shape=point, style=invis];
+    node_0_2563 [label="DatabaseQuery\nscope.cpp:11 | cpu_user: 174/188 cpu_sys: 33/53"];
+    node_1_2563 [label="DB_Latency\nscope.cpp:16 | cpu_user: 14/14 cpu_sys: 20/20"];
+    node_2_2563 [label="FinancialAnalysis\nscope.cpp:32 | cpu_user: 11/160081 cpu_sys: 8/560"];
+    node_3_2563 [label="DataProcessing\nscope.cpp:38 | cpu_user: 13/13 cpu_sys: 0/0"];
+    node_4_2563 [label="StatisticalCalculation\nscope.cpp:47 | cpu_user: 160057/160057 cpu_sys: 552/552"];
+    node_5_2563 [label="UserProcessing\nscope.cpp:75 | cpu_user: 33/160302 cpu_sys: 37/650"];
+    node_6_2563 [label="FinanceDepartment\nscope.cpp:88 | cpu_user: 4/160306 cpu_sys: 4/654"];
+    node_7_2563 [label="root\ncxxtrace.hpp:134 | cpu_user: 6/160314 cpu_sys: 10/665"];
+    node_8_2563 [label="default\ncxxtrace.hpp:136 | cpu_user: 2/160308 cpu_sys: 1/655"];
+    node_0_2563 -> node_1_2563 [label="cpu_user=14\ncpu_sys=20"];
+    node_2_2563 -> node_3_2563 [label="cpu_user=13\ncpu_sys=0"];
+    node_2_2563 -> node_4_2563 [label="cpu_user=160057\ncpu_sys=552"];
+    node_5_2563 -> node_0_2563 [label="cpu_user=188\ncpu_sys=53"];
+    node_5_2563 -> node_2_2563 [label="cpu_user=160081\ncpu_sys=560"];
+    node_6_2563 -> node_5_2563 [label="cpu_user=160302\ncpu_sys=650"];
+    node_7_2563 -> node_8_2563 [label="cpu_user=160308\ncpu_sys=655"];
+    node_8_2563 -> node_6_2563 [label="cpu_user=160306\ncpu_sys=654"];
+    }
+  process_node -> cluster_thread_2563_entry [lhead=cluster_thread_2563, color="#6c757d", style=dashed];
+}

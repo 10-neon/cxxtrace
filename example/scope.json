@@ -1,0 +1,382 @@
+{
+    "metadata": {
+        "schema_version": "1.0-cxxtrace",
+        "timestamp": 1743916430955
+    },
+    "process": {
+        "cpu_usage": {
+            "system": 10012,
+            "user": 242045
+        },
+        "memory_usage": 1426240,
+        "pid": 90754
+    },
+    "threads": [
+        {
+            "cpu_usage": {
+                "system": 9177,
+                "user": 81707
+            },
+            "graph": {
+                "edges": [
+                    {
+                        "from": 0,
+                        "metrics": {
+                            "cpu_sys": 8,
+                            "cpu_user": 6,
+                            "heap_alloc": 0,
+                            "heap_dealloc": 0,
+                            "wall_clock": 0
+                        },
+                        "to": 1
+                    },
+                    {
+                        "from": 2,
+                        "metrics": {
+                            "cpu_sys": 3,
+                            "cpu_user": 7,
+                            "heap_alloc": 0,
+                            "heap_dealloc": 0,
+                            "wall_clock": 0
+                        },
+                        "to": 3
+                    },
+                    {
+                        "from": 2,
+                        "metrics": {
+                            "cpu_sys": 760,
+                            "cpu_user": 80339,
+                            "heap_alloc": 0,
+                            "heap_dealloc": 0,
+                            "wall_clock": 0
+                        },
+                        "to": 4
+                    },
+                    {
+                        "from": 5,
+                        "metrics": {
+                            "cpu_sys": 22,
+                            "cpu_user": 76,
+                            "heap_alloc": 0,
+                            "heap_dealloc": 0,
+                            "wall_clock": 0
+                        },
+                        "to": 0
+                    },
+                    {
+                        "from": 5,
+                        "metrics": {
+                            "cpu_sys": 768,
+                            "cpu_user": 80354,
+                            "heap_alloc": 0,
+                            "heap_dealloc": 0,
+                            "wall_clock": 0
+                        },
+                        "to": 2
+                    },
+                    {
+                        "from": 6,
+                        "metrics": {
+                            "cpu_sys": 834,
+                            "cpu_user": 80452,
+                            "heap_alloc": 0,
+                            "heap_dealloc": 0,
+                            "wall_clock": 0
+                        },
+                        "to": 5
+                    },
+                    {
+                        "from": 7,
+                        "metrics": {
+                            "cpu_sys": 1005,
+                            "cpu_user": 80664,
+                            "heap_alloc": 0,
+                            "heap_dealloc": 0,
+                            "wall_clock": 0
+                        },
+                        "to": 8
+                    },
+                    {
+                        "from": 8,
+                        "metrics": {
+                            "cpu_sys": 1005,
+                            "cpu_user": 80675,
+                            "heap_alloc": 0,
+                            "heap_dealloc": 0,
+                            "wall_clock": 0
+                        },
+                        "to": 6
+                    }
+                ],
+                "nodes": [
+                    {
+                        "id": 0,
+                        "location": {
+                            "column": 30,
+                            "file": "/Users/bytedance/workspace/cxxtrace/example/scope.cpp",
+                            "line": 11
+                        },
+                        "tag": "DatabaseQuery"
+                    },
+                    {
+                        "id": 1,
+                        "location": {
+                            "column": 51,
+                            "file": "/Users/bytedance/workspace/cxxtrace/example/scope.cpp",
+                            "line": 16
+                        },
+                        "tag": "DB_Latency"
+                    },
+                    {
+                        "id": 2,
+                        "location": {
+                            "column": 34,
+                            "file": "/Users/bytedance/workspace/cxxtrace/example/scope.cpp",
+                            "line": 32
+                        },
+                        "tag": "FinancialAnalysis"
+                    },
+                    {
+                        "id": 3,
+                        "location": {
+                            "column": 35,
+                            "file": "/Users/bytedance/workspace/cxxtrace/example/scope.cpp",
+                            "line": 38
+                        },
+                        "tag": "DataProcessing"
+                    },
+                    {
+                        "id": 4,
+                        "location": {
+                            "column": 43,
+                            "file": "/Users/bytedance/workspace/cxxtrace/example/scope.cpp",
+                            "line": 47
+                        },
+                        "tag": "StatisticalCalculation"
+                    },
+                    {
+                        "id": 5,
+                        "location": {
+                            "column": 31,
+                            "file": "/Users/bytedance/workspace/cxxtrace/example/scope.cpp",
+                            "line": 75
+                        },
+                        "tag": "UserProcessing"
+                    },
+                    {
+                        "id": 6,
+                        "location": {
+                            "column": 28,
+                            "file": "/Users/bytedance/workspace/cxxtrace/example/scope.cpp",
+                            "line": 83
+                        },
+                        "tag": "MainProgram"
+                    },
+                    {
+                        "id": 7,
+                        "location": {
+                            "column": 63,
+                            "file": "/Users/bytedance/workspace/cxxtrace/include/cxxtrace/cxxtrace.hpp",
+                            "line": 134
+                        },
+                        "tag": "root"
+                    },
+                    {
+                        "id": 8,
+                        "location": {
+                            "column": 32,
+                            "file": "/Users/bytedance/workspace/cxxtrace/include/cxxtrace/cxxtrace.hpp",
+                            "line": 136
+                        },
+                        "tag": "default"
+                    }
+                ]
+            },
+            "id": 259,
+            "name": "Main Thread"
+        },
+        {
+            "cpu_usage": {
+                "system": 665,
+                "user": 160314
+            },
+            "graph": {
+                "edges": [
+                    {
+                        "from": 0,
+                        "metrics": {
+                            "cpu_sys": 20,
+                            "cpu_user": 14,
+                            "heap_alloc": 0,
+                            "heap_dealloc": 0,
+                            "wall_clock": 0
+                        },
+                        "to": 1
+                    },
+                    {
+                        "from": 2,
+                        "metrics": {
+                            "cpu_sys": 0,
+                            "cpu_user": 13,
+                            "heap_alloc": 0,
+                            "heap_dealloc": 0,
+                            "wall_clock": 0
+                        },
+                        "to": 3
+                    },
+                    {
+                        "from": 2,
+                        "metrics": {
+                            "cpu_sys": 552,
+                            "cpu_user": 160057,
+                            "heap_alloc": 0,
+                            "heap_dealloc": 0,
+                            "wall_clock": 0
+                        },
+                        "to": 4
+                    },
+                    {
+                        "from": 5,
+                        "metrics": {
+                            "cpu_sys": 53,
+                            "cpu_user": 188,
+                            "heap_alloc": 0,
+                            "heap_dealloc": 0,
+                            "wall_clock": 0
+                        },
+                        "to": 0
+                    },
+                    {
+                        "from": 5,
+                        "metrics": {
+                            "cpu_sys": 560,
+                            "cpu_user": 160081,
+                            "heap_alloc": 0,
+                            "heap_dealloc": 0,
+                            "wall_clock": 0
+                        },
+                        "to": 2
+                    },
+                    {
+                        "from": 6,
+                        "metrics": {
+                            "cpu_sys": 650,
+                            "cpu_user": 160302,
+                            "heap_alloc": 0,
+                            "heap_dealloc": 0,
+                            "wall_clock": 0
+                        },
+                        "to": 5
+                    },
+                    {
+                        "from": 7,
+                        "metrics": {
+                            "cpu_sys": 655,
+                            "cpu_user": 160308,
+                            "heap_alloc": 0,
+                            "heap_dealloc": 0,
+                            "wall_clock": 0
+                        },
+                        "to": 8
+                    },
+                    {
+                        "from": 8,
+                        "metrics": {
+                            "cpu_sys": 654,
+                            "cpu_user": 160306,
+                            "heap_alloc": 0,
+                            "heap_dealloc": 0,
+                            "wall_clock": 0
+                        },
+                        "to": 6
+                    }
+                ],
+                "nodes": [
+                    {
+                        "id": 0,
+                        "location": {
+                            "column": 30,
+                            "file": "/Users/bytedance/workspace/cxxtrace/example/scope.cpp",
+                            "line": 11
+                        },
+                        "tag": "DatabaseQuery"
+                    },
+                    {
+                        "id": 1,
+                        "location": {
+                            "column": 51,
+                            "file": "/Users/bytedance/workspace/cxxtrace/example/scope.cpp",
+                            "line": 16
+                        },
+                        "tag": "DB_Latency"
+                    },
+                    {
+                        "id": 2,
+                        "location": {
+                            "column": 34,
+                            "file": "/Users/bytedance/workspace/cxxtrace/example/scope.cpp",
+                            "line": 32
+                        },
+                        "tag": "FinancialAnalysis"
+                    },
+                    {
+                        "id": 3,
+                        "location": {
+                            "column": 35,
+                            "file": "/Users/bytedance/workspace/cxxtrace/example/scope.cpp",
+                            "line": 38
+                        },
+                        "tag": "DataProcessing"
+                    },
+                    {
+                        "id": 4,
+                        "location": {
+                            "column": 43,
+                            "file": "/Users/bytedance/workspace/cxxtrace/example/scope.cpp",
+                            "line": 47
+                        },
+                        "tag": "StatisticalCalculation"
+                    },
+                    {
+                        "id": 5,
+                        "location": {
+                            "column": 31,
+                            "file": "/Users/bytedance/workspace/cxxtrace/example/scope.cpp",
+                            "line": 75
+                        },
+                        "tag": "UserProcessing"
+                    },
+                    {
+                        "id": 6,
+                        "location": {
+                            "column": 38,
+                            "file": "/Users/bytedance/workspace/cxxtrace/example/scope.cpp",
+                            "line": 88
+                        },
+                        "tag": "FinanceDepartment"
+                    },
+                    {
+                        "id": 7,
+                        "location": {
+                            "column": 63,
+                            "file": "/Users/bytedance/workspace/cxxtrace/include/cxxtrace/cxxtrace.hpp",
+                            "line": 134
+                        },
+                        "tag": "root"
+                    },
+                    {
+                        "id": 8,
+                        "location": {
+                            "column": 32,
+                            "file": "/Users/bytedance/workspace/cxxtrace/include/cxxtrace/cxxtrace.hpp",
+                            "line": 136
+                        },
+                        "tag": "default"
+                    }
+                ]
+            },
+            "id": 2563,
+            "name": ""
+        }
+    ]
+}

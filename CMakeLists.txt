@@ -10,6 +10,7 @@ include(GNUInstallDirs)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # Compilation options
 option(BUILD_DOCS "Enable building of documentation" ON)
 option(BUILD_TESTING "Enable building of unittest" ON)
@@ -17,8 +18,8 @@ option(BUILD_TESTING "Enable building of unittest" ON)
 # compile the library
 add_subdirectory(src)
 
-# compile the application
-add_subdirectory(app)
+# compile the example
+add_subdirectory(example)
 
 # compile the tests
 include(CTest)
