@@ -1,6 +1,6 @@
 [project]
 name = "cxxtrace"
-version = "0.1.0"
+version = "0.2.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
@@ -11,3 +11,11 @@ dev = [
     "commitizen>=4.6.0",
     "pre-commit>=4.2.0",
 ]
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "$version"
+version_scheme = "semver"
+version_provider = "pep621"
+update_changelog_on_bump = true
+major_version_zero = true

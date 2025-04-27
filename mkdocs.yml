@@ -1,0 +1,17 @@
+site_name: "CXXTrace documentation"
+nav:
+  - Home: index.md
+
+theme:
+  name: material
+
+plugins:
+  - search
+  - mkdoxy:
+      projects:
+        CXXTrace:
+          src-dirs: src include
+          full-doc: True
+          doxy-cfg: # standard doxygen configuration (key: value)
+            FILE_PATTERNS: "*.cpp *.h* *.cc"
+            RECURSIVE: True
