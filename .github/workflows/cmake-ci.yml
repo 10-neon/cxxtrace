@@ -1,0 +1,58 @@
+name: CMake Multiple Platform Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        include:
+          - os: ubuntu-latest
+            preset: linux-gcc
+            config: Debug
+          - os: ubuntu-latest
+            preset: linux-clang
+            config: Debug
+          - os: macos-latest
+            preset: macos
+            config: Debug
+          - os: windows-latest
+            preset: windows-x86_64
+            config: Debug
+          - os: windows-latest
+            preset: windows-x86
+            config: Debug
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        submodules: 'recursive'
+
+    - name: Configure CMake
+      run: cmake --preset ${{ matrix.preset }}
+
+    - name: Build
+      run: |
+        if [[ "${{ matrix.os }}" == "windows-latest" || "${{ matrix.os }}" == "macos-latest" ]]; then
+          cmake --build --preset ${{ matrix.preset }} --config ${{ matrix.config }}
+        else
+          cmake --build --preset ${{ matrix.preset }}
+        fi
+
+    - name: Test
+      working-directory: ${{github.workspace}}/build/${{ matrix.preset }}
+      run: |
+        if [[ "${{ matrix.os }}" == "windows-latest" || "${{ matrix.os }}" == "macos-latest" ]]; then
+          ctest --preset ${{ matrix.preset }} --test-dir unittest -C ${{ matrix.config }} --output-on-failure
+        else
+          ctest --preset ${{ matrix.preset }} --test-dir unittest --output-on-failure
+        fi

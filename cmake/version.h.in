@@ -1,0 +1,5 @@
+#pragma once
+
+namespace buildinfo {
+constexpr const char *version = "@GIT_VERSION@";
+}

@@ -1,0 +1,26 @@
+{
+    "version": 4,
+    "include": [
+        "base.json"
+    ],
+    "configurePresets": [
+        {
+            "name": "ios",
+            "inherits": [
+                "host-macos",
+                "target-ios",
+                "xcode",
+                "default"
+            ]
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "ios",
+            "configurePreset": "ios",
+            "inherits": [
+                "host-macos"
+            ]
+        }
+    ]
+}

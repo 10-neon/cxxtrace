@@ -1,0 +1,18 @@
+build
+# python
+.venv
+
+# clangd
+compile_commands.json
+.cache
+
+# coverage
+*profraw
+*profdata
+
+# IDE file
+.idea
+*.DS_Store
+.zed
+.vs
+.vscode

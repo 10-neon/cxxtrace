@@ -1,0 +1,13 @@
+[project]
+name = "cxxtrace"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "commitizen>=4.6.0",
+    "pre-commit>=4.2.0",
+]
