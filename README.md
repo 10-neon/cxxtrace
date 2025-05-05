@@ -161,3 +161,7 @@ open dist/index.html
 
 #### 各线程tag聚类信息
 ![tags view](docs/images/tag.png)
+
+#### 调用图
+目前调用图在webui中暂不支持
+![call graph](docs/images/callgraph.png)

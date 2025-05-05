@@ -1,12 +1,11 @@
 option(CMAKE_VERBOSE "output verbose log during cmake generation" ON)
 
 function(msg level)
-    if ("${level}" STREQUAL "FATAL_ERROR"
-        OR "${level}" STREQUAL "FATAL"
-        OR "${level}" STREQUAL "ERROR"
+    if("${level}" STREQUAL "FATAL_ERROR" OR "${level}" STREQUAL "FATAL" OR "${level}" STREQUAL
+                                                                           "ERROR"
     )
         message(${level} "[cxxtrace] " ${ARGN})
-    elseif (CMAKE_VERBOSE)
+    elseif(CMAKE_VERBOSE)
         message(${level} "[cxxtrace] " ${ARGN})
     endif()
 endfunction(msg)
