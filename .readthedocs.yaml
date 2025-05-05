@@ -7,7 +7,7 @@ build:
   jobs:
     pre_install:
       - pip install mkdocs mkdocs-material mkdoxy
-      - apt-get install doxygen
+      # - apt-get install doxygen
 
 mkdocs:
   configuration: mkdocs.yml
