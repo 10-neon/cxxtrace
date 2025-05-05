@@ -10,12 +10,12 @@ include(cmake/lifecycle/post_project.cmake)
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 
 option(BUILD_DOCS "Enable building of documentation" ON)
-option(BUILD_TESTING "Enable building of unittest" ON)
+option(BUILD_TESTING "Enable building of unittest" OFF)
 
 if(${BUILD_TESTING})
     enable_testing()
     set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-    CPMAddPackage("gh:google/googletest#v1.16.0")
+    cpmaddpackage("gh:google/googletest#v1.16.0")
     include(GoogleTest)
 endif()
 

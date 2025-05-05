@@ -12,3 +12,17 @@ RUN if [ "${REINSTALL_CMAKE_VERSION_FROM_SOURCE}" != "none" ]; then \
 
 RUN apt-get install -y ninja-build
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# 设置环境变量
+ENV ANDROID_NDK_VERSION r27c
+ENV ANDROID_NDK_HOME /opt/android-ndk
+ENV ANDROID_NDK /opt/android-ndk
+
+# 下载并安装Android NDK
+RUN wget -q https://dl.google.com/android/repository/android-ndk-${ANDROID_NDK_VERSION}-linux.zip && \
+    unzip -q android-ndk-${ANDROID_NDK_VERSION}-linux.zip -d /opt && \
+    mv /opt/android-ndk-${ANDROID_NDK_VERSION} ${ANDROID_NDK_HOME} && \
+    rm android-ndk-${ANDROID_NDK_VERSION}-linux.zip
+
+# 设置环境变量
+ENV PATH ${PATH}:${ANDROID_NDK_HOME}
