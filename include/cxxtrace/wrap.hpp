@@ -1,64 +1,53 @@
 #pragma once
 #include <memory>
-
+#include <type_traits>
 namespace neon {
-template <typename BeforeAction, typename AfterAction>
-class ParametricWrapBase {
+
+template <typename Ptr, typename Before, typename After, typename Context>
+class WrapPtr {
    protected:
-    BeforeAction before_action_;
-    AfterAction after_action_;
+    Ptr ptr_;
+    Before before_;
+    After after_;
+    Context ctx_;
 
    public:
-    ParametricWrapBase(BeforeAction before, AfterAction after)
-        : before_action_(before), after_action_(after) {}
+    WrapPtr(Before&& before, After&& after, Context&& ctx)
+        : ptr_{nullptr},
+          before_(std::forward<Before>(before)),
+          after_(std::forward<After>(after)),
+          ctx_(std::forward<Context>(ctx)) {}
+    WrapPtr(Ptr ptr, Before&& before, After&& after, Context&& ctx)
+        : ptr_{std::forward<Ptr>(ptr)},
+          before_(std::forward<Before>(before)),
+          after_(std::forward<After>(after)),
+          ctx_(std::forward<Context>(ctx)) {}
 
-    template <typename U, typename Param>
     struct CallProxy {
-        U &obj;
-        Param param;
-        BeforeAction before_action_;
-        AfterAction after_action_;
-        CallProxy(U &obj, BeforeAction before, AfterAction after,
-                  Param const &param)
-            : obj(obj),
-              before_action_(before),
-              after_action_(after),
-              param{param} {
-            before_action_(param);
-        }
-        ~CallProxy() { after_action_(param); }
-        U *operator->() { return &obj; }
+        WrapPtr& wrap_;
+        CallProxy(WrapPtr& wrap) : wrap_(wrap) { wrap_.before_(wrap_.ctx_); }
+        ~CallProxy() { wrap_.after_(wrap_.ctx_); }
+        auto operator->() { return &(*wrap_.ptr_); }
     };
-};
 
-template <typename Pointer, typename BeforeAction, typename AfterAction,
-          typename Param>
-class ParametricWrapPtr : public ParametricWrapBase<BeforeAction, AfterAction> {
-    Pointer pointer;
-    Param param;
-
-   public:
-    ParametricWrapPtr(BeforeAction before, AfterAction after,
-                      Param const &param)
-        : ParametricWrapPtr(nullptr, before, after), param{param} {}
-    ParametricWrapPtr(Pointer pointer, BeforeAction before, AfterAction after,
-                      Param const &param)
-        : ParametricWrapBase<BeforeAction, AfterAction>(before, after),
-          pointer(std::move(pointer)),
-          param{param} {}
-    operator Pointer const &() const & { return pointer; }
-    operator Pointer &() & { return pointer; }
-    operator Pointer &&() && { return std::move(pointer); }
-    typename ParametricWrapBase<BeforeAction, AfterAction>::template CallProxy<
-        typename std::remove_reference<decltype(*pointer)>::type, Param>
-    operator->() {
-        return {*pointer, this->before_action_, this->after_action_, param};
-    }
-    template <typename U>
-    ParametricWrapPtr &operator=(U other_pointer) {
-        pointer = std::move(other_pointer);
+    operator bool() const { return ptr_ != nullptr; }
+    operator Ptr const&() const& { return ptr_; }
+    operator Ptr&() & { return ptr_; }
+    operator Ptr&&() && { return std::move(ptr_); }
+    Ptr& ptr() { return ptr_; }
+    CallProxy operator->() { return {*this}; }
+    WrapPtr& operator=(Ptr other) {
+        ptr_ = std::move(other);
         return *this;
     }
 };
+
+template <typename Ptr, typename Before, typename After, typename Context>
+WrapPtr<Ptr, Before, After, Context> wrap(Ptr&& ptr, Before&& before,
+                                          After&& after, Context&& ctx) {
+    return WrapPtr<Ptr, Before, After, Context>{
+        std::forward<Ptr>(ptr), std::forward<Before>(before),
+        std::forward<After>(after), std::forward<Context>(ctx)};
+}
 
 }  // namespace neon

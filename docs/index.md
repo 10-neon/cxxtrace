@@ -14,6 +14,7 @@
 
 ## TODO
 - [ ] 统计没有静态链接此库但是也被使用的动态库中相关内存分配
+- [ ] 支持采样
 - [ ] 优化trace格式: 1. 改用flatbuffer 2. 使用一些类似 [neonlog](https://github.com/PlatformLab/NanoLog) 的优化手段
 - [ ] 手写落盘过程: 计划参考java fqueue、批量写入、双缓冲等
 - [ ] 优化现有代码

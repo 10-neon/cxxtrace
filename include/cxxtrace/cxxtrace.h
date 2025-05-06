@@ -1,11 +1,4 @@
 #pragma once
-#include <array>
-#include <atomic>
-#include <condition_variable>
-#include <mutex>
-#include <string>
-#include <thread>
-
 #include "location.h"
 #include "wrap.hpp"
 
@@ -30,26 +23,25 @@ class TraceScope {
     Location loc_;
 };
 
-struct TraceInfo {
+struct TraceContext {
     Location loc;
     Tag tag;
+    static void before(TraceContext const& ctx) {
+        TraceSectionBegin(ctx.tag, ctx.loc);
+    }
+    static void after(TraceContext const& ctx) {
+        TraceSectionEnd(ctx.tag, ctx.loc);
+    }
 };
 template <typename Pointer>
-using TracePtr = ParametricWrapPtr<Pointer, void (*)(TraceInfo const&),
-                                   void (*)(TraceInfo const&), TraceInfo>;
+using TracePtr = WrapPtr<Pointer, decltype(TraceContext::before)*,
+                         decltype(TraceContext::after)*, TraceContext>;
 
 template <typename Pointer>
 TracePtr<Pointer> traceWrap(Tag tag, SourceLocation loc,
                             Pointer pointer = nullptr) {
-    return TracePtr<Pointer>{
-        std::move(pointer),
-        [](TraceInfo const& trace_info) {
-            TraceSectionBegin(trace_info.tag, trace_info.loc);
-        },
-        [](TraceInfo const& trace_info) {
-            TraceSectionEnd(trace_info.tag, trace_info.loc);
-        },
-        TraceInfo{.loc = loc, .tag = tag}};
+    return wrap(std::move(pointer), &TraceContext::before, &TraceContext::after,
+                TraceContext{.loc = loc, .tag = tag});
 }
 
 }  // namespace neon
